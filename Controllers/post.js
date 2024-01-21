@@ -38,7 +38,7 @@ res.send({
     });
     }catch(error){
 res.send({
-       message:'delete successfully'
+       message:'not delete successfully'
     });
     }
 }
