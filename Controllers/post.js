@@ -2,8 +2,9 @@ const {Post}=require('../models/post');
 
 const getPosts=async(req,res)=>{
     try{
-        
-        const data=await Post.find();
+        const {limit=10,skip=0}=req.query;
+        const sortBy={title:1};
+        const data=await Post.find().sort(sortBy).skip(skip).limit(limit);
        res.send(data)
     }catch(error){
         console.log(error);
