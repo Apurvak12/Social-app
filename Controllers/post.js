@@ -42,9 +42,27 @@ res.send({
     }
 }
 
-
+const putPost=async(req,res)=>{
+    try{
+          let existingData=await Post.findById(req.params.id);
+          if(!existingData){
+           return res.send('No data with this id');
+          }
+       console.log('Exsiting data',existingData);
+         const result=await Post.updateOne(
+            ({_id:req.params.id}),
+            req.body
+          );
+           console.log('Result',result);
+       return res.send({message:'updated'});
+    }catch(error){
+         console.log('Error',error);
+        res.send('opps,something went wrong');
+    }
+};
 module.exports={
     getPosts,
     addPost,
     deletePost,
+    putPost,
 };
