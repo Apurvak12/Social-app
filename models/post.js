@@ -10,7 +10,13 @@ const PostSchema=new Schema({
         type:String,
         trim:true,
     },
+
+postId:{
+    type: Schema.Types.ObjectId,
+    ref:'Comments',
+}
 });
+
 
 const Post=mongoose.model('Post',PostSchema);
 
